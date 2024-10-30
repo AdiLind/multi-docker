@@ -14,7 +14,7 @@ after_success:
   - docker build -t adili/multi-server ./server
   - docker build -t adili/multi-worker ./worker
   #Login to docker CLI
-  - echo "$Docker-PASSWORD" | docker login 0u "$Docker-ID" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login 0u "$DOCKER_ID" --password-stdin
   #Take those images and push them to docker hub
   - docker push adili/multi-client
   - docker push adili/multi-nginx
