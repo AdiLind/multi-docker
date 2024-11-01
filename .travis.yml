@@ -3,20 +3,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t adili/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t adi645/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true adili/react-test npm test
+  - docker run -e CI=true adi645/react-test npm test
 
 after_success:
-  - docker build -t adili/multi-client ./client
-  - docker build -t adili/multi-nginx ./nginx
-  - docker build -t adili/multi-server ./server
-  - docker build -t adili/multi-worker ./worker
+  - docker build -t adi645/multi-client ./client
+  - docker build -t adi645/multi-nginx ./nginx
+  - docker build -t adi645/multi-server ./server
+  - docker build -t adi645/multi-worker ./worker
   #Login to docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   #Take those images and push them to docker hub
-  - docker push adili/multi-client
-  - docker push adili/multi-nginx
-  - docker push adili/multi-server
-  - docker push adili/multi-worker
+  - docker push adi645/multi-client
+  - docker push adi645/multi-nginx
+  - docker push adi645/multi-server
+  - docker push adi645/multi-worker
